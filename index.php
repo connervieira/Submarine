@@ -24,13 +24,13 @@ if (isset($submarine_config["auth"]["provider"])) {
         <h1><?php echo htmlspecialchars($submarine_config["interface"]["branding"]["name"]); ?></h1>
         <?php
         if (isset($submarine_config) == false or $submarine_config["auth"]["admin"] == "") {
-            echo "<p>There is no administrator configured on this instance. The configuration interface is currently unrestricted to allow for an administrator to be set.</p>";
+            echo "<p class='bad'>There is no administrator configured on this instance. The configuration interface is currently unrestricted to allow for an administrator to be set.</p>";
             echo "<p>The rest of this page will not load until an administrator is configured.</p>";
             exit();
         }
 
         if (in_array($username, $submarine_config["auth"]["authorized_users"]) == false and $username !== $submarine_config["auth"]["admin"]) { // Check to see if this user is not authorized to view this page.
-            echo "<p>You are not permitted to view this page. Please make sure you are signed in with the correct account.</p>";
+            echo "<p class='bad'>You are not permitted to view this page. Please make sure you are signed in with the correct account.</p>";
             exit();
         }
         ?>

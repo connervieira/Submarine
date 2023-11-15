@@ -1,20 +1,18 @@
 <?php
 include "./config.php";
-if (isset($submarine_config["auth"]["provider"])) {
+if (isset($submarine_config["auth"]["provider"])) { // Check to see if an authentication provider has been configured.
     $force_login_redirect = true;
-    include $submarine_config["auth"]["provider"];
+    include $submarine_config["auth"]["provider"]; // Load the authentication provider.
 } else {
     echo "<p>There is no authentication provider configured.</p>";
     exit();
 }
 
 function online($ip) {
-    $pingresult = exec("ping -c 1 -W 1 $ip", $outcome, $status);
-    if (0 == $status) {
-        return true;
-    } else {
-        return false;
-    }
+    exec("ping -c 1 -W 1 $ip", $outcome, $status); // Run a single ping, with a one second time-out.
+
+    if (0 == $status) { return true;
+    } else { return false; }
 }
 ?>
 
@@ -27,7 +25,7 @@ function online($ip) {
     <body>
         <?php
         if (in_array($username, $submarine_config["auth"]["authorized_users"]) == false and $username !== $submarine_config["auth"]["admin"]) { // Check to see if this user is not authorized to view this page.
-            echo "<p>You are not permitted to view this page. Please make sure you are signed in with the correct account.</p>";
+            echo "<p class='bad'>You are not permitted to view this page. Please make sure you are signed in with the correct account.</p>";
             exit();
         }
 
