@@ -20,7 +20,7 @@ hr {
     margin-bottom: 40px;
 }
 
-input {
+input, select {
     padding: 5px;
     margin-top: 5px;
     border-radius: 7px;
