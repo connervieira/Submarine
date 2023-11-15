@@ -20,15 +20,26 @@ hr {
     margin-bottom: 40px;
 }
 
+input {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 7px;
+}
+
 .navbar {
     text-align: left;
 }
 
 .button {
+    border: inherit;
+    font-size: inherit;
+    text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+    color: inherit;
+    font-family: inherit;
 }
 
 .address {
-    margin-bottom:-15px;
+    margin-bottom: -15px;
 }

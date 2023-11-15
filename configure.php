@@ -7,9 +7,8 @@ if (isset($submarine_config["auth"]["provider"])) {
     echo "<p>There is no authentication provider configured.</p>";
     exit();
 }
-if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light") {
-    $submarine_config["interface"]["theme"] = $_POST["interface>theme"];
-}
+
+if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light") { $submarine_config["interface"]["theme"] = $_POST["interface>theme"]; } // Update the theme before loading the rest of the page so that the new page theme reflects the changes just made by the user.
 ?>
 
 <!DOCTYPE html>
@@ -127,7 +126,7 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             echo "<label for='targets>main>" . $shown_targets . ">title'>Target:</label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text'><br>";
             echo "<label for='targets>main>" . $shown_targets . ">ip'>Address:</label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text'><br>";
             ?>
-            <hr><input type="submit" value="Submit" name="submit" id="submit">
+            <hr><input class="button" type="submit" value="Submit" name="submit" id="submit">
         </form>
     </body>
 </html>
