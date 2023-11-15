@@ -3,6 +3,11 @@
 A simple status page to check connectivity to network targets.
 
 
+## Disclaimer
+
+While Submarine is designed to be secure and private, it has not been professional audited. An attacker who compromises Submarine may be able to the targets you monitor with the service, which could include the names and IP address of personal devices. If security is a concern, you should avoid exposing Submarine to the internet, and keep the service behind a firewall.
+
+
 ## Description
 
 Submarine is a simple self-hosted web utility that checks connectivity to a list of user-configured network targets. These targets can be just about device that the server hosting Subarmine has access to, including devices on the local network. If you have a large quantity of devices on your network, and you want to be able to quickly keep tabs on them, Submarine is a great way to do so.
