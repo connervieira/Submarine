@@ -29,26 +29,32 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
 
         <?php
 
-        if ($username !== $submarine_config["auth"]["admin"] and $submarine_config["auth"]["admin"] !== "") {
-            echo "<p>You don not have permission to configure this instance. Please make sure you are signed in with the correct account.</p>";
+        if ($username !== $submarine_config["auth"]["admin"] and $submarine_config["auth"]["admin"] !== "") { // Check to see if the current user is unauthorized to make configuration changes.
+            echo "<p>You do not have permission to configure this instance. Please make sure you are signed in with the correct account.</p>";
             exit();
         }
 
-        if ($_POST["submit"] == "Submit") {
+
+        if ($_POST["submit"] == "Submit") { // Check to see if the configuration form has been submitted.
             $configuration_valid = true; // This is a placeholder that will be changed to 'false' if an invalid configuration value is encountered.
 
+            if ($_POST["auth>admin"] !== preg_replace("/[^a-zA-Z0-9]/", '', $_POST["auth>admin"])) { // Verify that the admin userinput only contains permitted characters.
+                echo "<p class='bad'>The administrator username <b>" . htmlspecialchars($_POST["auth>admin"]) . "</b> contains disallowed characters.</p>";
+                $configuration_valid = false;
+            }
             $submarine_config["auth"]["admin"] = $_POST["auth>admin"];
+            
 
             $submarine_config["auth"]["authorized_users"] = array();
             if (strlen($_POST["auth>authorized_users"]) > 0) {
                 foreach (explode(",", $_POST["auth>authorized_users"]) as $authorized_user) {
                     if (strlen($authorized_user) > 0) {
                         $authorized_user = trim($authorized_user); // Trim any trailing or leading whitespace from this entry.
-                        if ($authorized_user == preg_replace("/[^a-zA-Z0-9]/", '', $authorized_user)) { // Verify that this entry only contains permitted characters.
-                            array_push($submarine_config["auth"]["authorized_users"], trim($authorized_user));
-                        } else {
+                        if (trim($authorized_user) == preg_replace("/[^a-zA-Z0-9]/", '', trim($authorized_user))) { // Verify that this entry only contains permitted characters.
                             echo "<p class='bad'>The <b>" . htmlspecialchars($authorized_user) . "</b> username contains disallowed characters.</p>";
                             $configuration_valid = false;
+                        } else {
+                            array_push($submarine_config["auth"]["authorized_users"], trim(preg_replace("/[^a-zA-Z0-9]/", '', $authorized_user)));
                         }
                     }
                 }
@@ -113,13 +119,13 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             $shown_targets = 0;
             foreach ($submarine_config["targets"]["main"] as $key => $data) {
                 echo "<h4>" . $key . "</h4>";
-                echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value=\"" . str_replace('"', '\"', $key) . "\"><br>";
-                echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value=\"" . $data["ip"] . "\"><br><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">title'>Target:</label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value=\"" . str_replace('"', '\"', $key) . "\"><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">ip'>Address:</label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value=\"" . $data["ip"] . "\"><br><br>";
                 $shown_targets = $shown_targets + 1;
             }
             echo "<h4>New Target</h4>";
-            echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text'><br>";
-            echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text'><br>";
+            echo "<label for='targets>main>" . $shown_targets . ">title'>Target:</label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text'><br>";
+            echo "<label for='targets>main>" . $shown_targets . ">ip'>Address:</label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text'><br>";
             ?>
             <hr><input type="submit" value="Submit" name="submit" id="submit">
         </form>

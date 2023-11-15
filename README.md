@@ -37,3 +37,8 @@ After completing the initial installation process, Submarine doesn't require sig
 ### Customizable
 
 Submarine allows administrators to configure and customize the features, functionality, and theme through a conveinent web interface.
+
+
+## Documentation
+
+To learn more about how to install, set up, and use Submarine, see the [DOCUMENTATION.md](DOCUMENTATION.md) file.
