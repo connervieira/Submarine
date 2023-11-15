@@ -22,6 +22,7 @@ function online($ip) {
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $submarine_config["interface"]["theme"]; ?>.css">
     </head>
     <body>
         <?php
@@ -33,10 +34,11 @@ function online($ip) {
 
         if (sizeof($submarine_config["targets"]["main"]) > 0) { // Check to see if there is 1 or more targets in the configuration.
             foreach ($submarine_config["targets"]["main"] as $key => $host) {
+                if ($submarine_config["interface"]["show_ip"]) { echo "<p class='address'>" . $host["ip"] . "</p>"; } // Show the IP address of this target if configured to do so.
                 if (online($host["ip"])) {
-                    echo "<p title='" . $host["ip"] . "'>" . $key . " is <span class='green'>online</span></p>";
+                    echo "<p title='" . $host["ip"] . "'>" . $key . " is <span class='good'>online</span></p>";
                 } else {
-                    echo "<p title='" . $host["ip"] . "'>" . $key . " is <span class='red'>offline</span></p>";
+                    echo "<p title='" . $host["ip"] . "'>" . $key . " is <span class='bad'>offline</span></p>";
                 }
             }
         } else {

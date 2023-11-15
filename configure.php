@@ -7,20 +7,24 @@ if (isset($submarine_config["auth"]["provider"])) {
     echo "<p>There is no authentication provider configured.</p>";
     exit();
 }
+if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light") {
+    $submarine_config["interface"]["theme"] = $_POST["interface>theme"];
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title><?php echo htmlspecialchars(strval($submarine_config["branding"]["name"])); ?> - Configure</title>
+        <title><?php echo htmlspecialchars(strval($submarine_config["interface"]["branding"]["name"])); ?> - Configure</title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $submarine_config["interface"]["theme"]; ?>.css">
     </head>
 
     <body>
         <div class="navbar">
             <a class="button" href="./">Back</a>
         </div>
-        <h1><?php echo htmlspecialchars($submarine_config["branding"]["name"]); ?></h1>
+        <h1><?php echo htmlspecialchars($submarine_config["interface"]["branding"]["name"]); ?></h1>
         <h2>Configure</h2>
 
         <?php
@@ -31,6 +35,8 @@ if (isset($submarine_config["auth"]["provider"])) {
         }
 
         if ($_POST["submit"] == "Submit") {
+            $configuration_valid = true; // This is a placeholder that will be changed to 'false' if an invalid configuration value is encountered.
+
             $submarine_config["auth"]["admin"] = $_POST["auth>admin"];
 
             $submarine_config["auth"]["authorized_users"] = array();
@@ -40,6 +46,17 @@ if (isset($submarine_config["auth"]["provider"])) {
                         array_push($submarine_config["auth"]["authorized_users"], trim($authorized_user));
                     }
                 }
+            }
+
+
+            if ($_POST["interface>show_ip"] == "on") { $submarine_config["interface"]["show_ip"] = true;
+            } else { $submarine_config["interface"]["show_ip"] = false; }
+
+            if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light") {
+                $submarine_config["interface"]["theme"] = $_POST["interface>theme"];
+            } else {
+                echo "<p class='bad'>The interface theme is set to an invalid value.</p>";
+                $configuration_valid = false;
             }
 
 
@@ -56,15 +73,30 @@ if (isset($submarine_config["auth"]["provider"])) {
             }
 
 
-            file_put_contents($submarine_config_database_filepath, json_encode($submarine_config, (JSON_UNESCAPED_SLASHES)));
-            echo "<p>Successfully updated configuration.</p>";
+            if ($configuration_valid == true) {
+                file_put_contents($submarine_config_database_filepath, json_encode($submarine_config, (JSON_UNESCAPED_SLASHES)));
+                echo "<p class='good'>Successfully updated configuration.</p>";
+            } else {
+                echo "<p class='bad'>The configuration was not updated.</p>";
+            }
         }
         ?>
 
         <form method="post">
             <br><h3>Authentication</h3>
-            <label for="auth>admin">Administrator</label> <input name="auth>admin" id="auth>admin" placeholder="admin" type="text" value="<?php echo $submarine_config["auth"]["admin"]; ?>"><br>
-            <label for="auth>authorized_users">Authorized Users</label> <input name="auth>authorized_users" id="auth>authorized_users" placeholder="user1, user2, user3" type="text" value="<?php $users = ""; foreach ($submarine_config["auth"]["authorized_users"] as $user) { $users = $users . $user . ","; } echo substr($users, 0, strlen($users)-1); ?>"><br>
+            <label for="auth>admin">Administrator:</label> <input name="auth>admin" id="auth>admin" placeholder="admin" type="text" value="<?php echo $submarine_config["auth"]["admin"]; ?>"><br>
+            <label for="auth>authorized_users">Authorized Users:</label> <input name="auth>authorized_users" id="auth>authorized_users" placeholder="user1, user2, user3" type="text" value="<?php $users = ""; foreach ($submarine_config["auth"]["authorized_users"] as $user) { $users = $users . $user . ","; } echo substr($users, 0, strlen($users)-1); ?>"><br>
+
+
+            <br><h3>Interface</h3>
+            <label for="interface>show_ip">Show Target Addresses:</label> <input name="interface>show_ip" id="interface>show_ip" type="checkbox" <?php if ($submarine_config["interface"]["show_ip"] == true) { echo "checked"; } ?>><br>
+
+            <label for="interface>theme">Theme:</label>
+            <select name="interface>theme" id="interface>theme">
+                <option name="interface>show_ip" id="interface>show_ip" value="light" <?php if ($submarine_config["interface"]["theme"] == "light") { echo "selected"; } ?>>Light</option>
+                <option name="interface>show_ip" id="interface>show_ip" value="dark" <?php if ($submarine_config["interface"]["theme"] == "dark") { echo "selected"; } ?>>Dark</option>
+            </select>
+
 
             <br><h3>Targets</h3>
             <?php

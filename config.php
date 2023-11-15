@@ -6,7 +6,9 @@ if (!file_exists($submarine_config_database_filepath)) { // Check to see if the 
     $submarine_config["auth"]["provider"] = "../dropauth/authentication.php";
     $submarine_config["auth"]["admin"] = "";
     $submarine_config["auth"]["authorized_users"] = array();
-    $submarine_config["branding"]["name"] = "Submarine";
+    $submarine_config["interface"]["branding"]["name"] = "Submarine";
+    $submarine_config["interface"]["show_ip"] = false;
+    $submarine_config["interface"]["theme"] = "dark";
     $submarine_config["targets"]["main"] = array();
 
     if (is_writable(dirname($submarine_config_database_filepath))) {

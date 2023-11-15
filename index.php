@@ -12,15 +12,16 @@ if (isset($submarine_config["auth"]["provider"])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title><?php echo htmlspecialchars(strval($submarine_config["branding"]["name"])); ?></title>
+        <title><?php echo htmlspecialchars(strval($submarine_config["interface"]["branding"]["name"])); ?></title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $submarine_config["interface"]["theme"]; ?>.css">
     </head>
 
     <body>
         <div class="navbar">
             <a class="button" href="./configure.php">Configure</a>
         </div>
-        <h1><?php echo htmlspecialchars($submarine_config["branding"]["name"]); ?></h1>
+        <h1><?php echo htmlspecialchars($submarine_config["interface"]["branding"]["name"]); ?></h1>
         <?php
         if (isset($submarine_config) == false or $submarine_config["auth"]["admin"] == "") {
             echo "<p>There is no administrator configured on this instance. The configuration interface is currently unrestricted to allow for an administrator to be set.</p>";
