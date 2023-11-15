@@ -83,12 +83,12 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
         ?>
 
         <form method="post">
-            <br><h3>Authentication</h3>
+            <hr><h3>Authentication</h3>
             <label for="auth>admin">Administrator:</label> <input name="auth>admin" id="auth>admin" placeholder="admin" type="text" value="<?php echo $submarine_config["auth"]["admin"]; ?>"><br>
             <label for="auth>authorized_users">Authorized Users:</label> <input name="auth>authorized_users" id="auth>authorized_users" placeholder="user1, user2, user3" type="text" value="<?php $users = ""; foreach ($submarine_config["auth"]["authorized_users"] as $user) { $users = $users . $user . ","; } echo substr($users, 0, strlen($users)-1); ?>"><br>
 
 
-            <br><h3>Interface</h3>
+            <hr><h3>Interface</h3>
             <label for="interface>show_ip">Show Target Addresses:</label> <input name="interface>show_ip" id="interface>show_ip" type="checkbox" <?php if ($submarine_config["interface"]["show_ip"] == true) { echo "checked"; } ?>><br>
 
             <label for="interface>theme">Theme:</label>
@@ -98,20 +98,20 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             </select>
 
 
-            <br><h3>Targets</h3>
+            <hr><h3>Targets</h3>
             <?php
             $shown_targets = 0;
             foreach ($submarine_config["targets"]["main"] as $key => $data) {
                 echo "<h4>" . $key . "</h4>";
                 echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value='" . $key . "'><br>";
-                echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value='" . $data["ip"] . "'><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value='" . $data["ip"] . "'><br><br>";
                 $shown_targets = $shown_targets + 1;
             }
             echo "<h4>New Target</h4>";
             echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text'><br>";
             echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text'><br>";
             ?>
-            <br><input type="submit" value="Submit" name="submit" id="submit">
+            <hr><input type="submit" value="Submit" name="submit" id="submit">
         </form>
     </body>
 </html>

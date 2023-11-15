@@ -3,6 +3,10 @@ body {
     color: #ffffff;
 }
 
+hr {
+    color: #999999;
+}
+
 .button {
     background: #666666;
 }

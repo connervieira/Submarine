@@ -34,7 +34,6 @@ if (isset($submarine_config["auth"]["provider"])) {
             exit();
         }
         ?>
-
         <iframe src="./ping.php"></iframe>
     </body>
 </html>
