@@ -43,7 +43,13 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             if (strlen($_POST["auth>authorized_users"]) > 0) {
                 foreach (explode(",", $_POST["auth>authorized_users"]) as $authorized_user) {
                     if (strlen($authorized_user) > 0) {
-                        array_push($submarine_config["auth"]["authorized_users"], trim($authorized_user));
+                        $authorized_user = trim($authorized_user); // Trim any trailing or leading whitespace from this entry.
+                        if ($authorized_user == preg_replace("/[^a-zA-Z0-9]/", '', $authorized_user)) { // Verify that this entry only contains permitted characters.
+                            array_push($submarine_config["auth"]["authorized_users"], trim($authorized_user));
+                        } else {
+                            echo "<p class='bad'>The <b>" . htmlspecialchars($authorized_user) . "</b> username contains disallowed characters.</p>";
+                            $configuration_valid = false;
+                        }
                     }
                 }
             }
@@ -65,9 +71,13 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             $submarine_config["targets"]["main"] = array(); // Reset the array of targets.
             $target_count = 0; // This is a placeholder that will keep track of each target sequentially.
             for ($i =0; $i <= $original_target_count + 1; $i++) { // Run once for each target in the configuration, plus one to account for the new entry.
-                echo $_POST["targets>main>0"];
-                if (strlen($_POST["targets>main>" . strval($target_count) . ">title"]) > 0) {
-                    $submarine_config["targets"]["main"][$_POST["targets>main>" . strval($target_count) . ">title"]]["ip"] = $_POST["targets>main>" . strval($target_count) . ">ip"];
+                $target_title = $_POST["targets>main>" . strval($target_count) . ">title"];
+                if (strlen($target_title) > 0) {
+                    if ($target_title !== preg_replace("/[^a-zA-Z0-9'\- ]/", '', $target_title)) { // Check to see if this entry contains disallowed characters.
+                        echo "<p class='bad'>The <b>" . htmlspecialchars($target_title) . "</b> target title contains disallowed characters.</p>";
+                        $configuration_valid = false;
+                    }
+                    $submarine_config["targets"]["main"][preg_replace("/[^a-zA-Z0-9'\- ]/", '', $target_title)]["ip"] = $_POST["targets>main>" . strval($target_count) . ">ip"];
                 }
                 $target_count = $target_count + 1;
             }
@@ -103,7 +113,7 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             $shown_targets = 0;
             foreach ($submarine_config["targets"]["main"] as $key => $data) {
                 echo "<h4>" . $key . "</h4>";
-                echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value=\"" . $key . "\"><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value=\"" . str_replace('"', '\"', $key) . "\"><br>";
                 echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value=\"" . $data["ip"] . "\"><br><br>";
                 $shown_targets = $shown_targets + 1;
             }
