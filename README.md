@@ -9,7 +9,7 @@ Submarine is a simple self-hosted web utility that checks connectivity to a list
 
 
 ## Screenshots
-TODO
+![Main Submarine interface with a few network hosts visible](assets/images/screenshots/main.png)
 
 
 ## Features
