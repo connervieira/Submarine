@@ -29,3 +29,11 @@ The Submarine interface adapts to all sorts of screen sizes using pure CSS, mean
 ### Accessible
 
 The simple design of Submarine makes in inherently accessible. All of the webpages are clear and easy to read, even with visual impairments.
+
+### Easy
+
+After completing the initial installation process, Submarine doesn't require significant technical experience to use.
+
+### Customizable
+
+Submarine allows administrators to configure and customize the features, functionality, and theme through a conveinent web interface.
