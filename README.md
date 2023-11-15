@@ -24,7 +24,7 @@ Submarine is incredibly lightweight, and can be viewed from practically any devi
 
 ### Responsive
 
-The Submarine interface adapters to all sorts of screen sizes using pure CSS, meaning even devices that don't support JavaScript work great.
+The Submarine interface adapts to all sorts of screen sizes using pure CSS, meaning even devices that don't support JavaScript work great.
 
 ### Accessible
 
