@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1024mm"
+   height="1024mm"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title8316">V0LT Submarine Logo</title>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.19756632"
+     inkscape:cx="751.64634"
+     inkscape:cy="1265.3979"
+     inkscape:window-width="3424"
+     inkscape:window-height="1355"
+     inkscape:window-x="8"
+     inkscape:window-y="40"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient7783">
+      <stop
+         style="stop-color:#feff9b;stop-opacity:1;"
+         offset="0"
+         id="stop7779" />
+      <stop
+         style="stop-color:#feff9b;stop-opacity:0;"
+         offset="1"
+         id="stop7781" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="882.84,386.0352"
+       end_point="878.83885,474.28226"
+       center_point="878.83885,430.15873"
+       id="path-effect3054"
+       is_visible="true"
+       lpeversion="1.1"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="45.028133,509.63"
+       end_point="930.91753,509.63"
+       center_point="487.97283,509.58943"
+       id="path-effect2741"
+       is_visible="true"
+       lpeversion="1.1"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7783"
+       id="linearGradient7785"
+       x1="279.76077"
+       y1="376.30231"
+       x2="1.6591845"
+       y2="376.30231"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(9.5250005)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:url(#linearGradient7785);fill-opacity:1;stroke:none;stroke-width:5.29167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 326.20043,405.86199 V 348.15115 L 10.806426,263.64161 v 228.85907 z"
+       id="path6226" />
+    <path
+       style="fill:#bc9090;fill-opacity:1;stroke:#000000;stroke-width:4.74928;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 753.33886,422.04153 62.36477,-36.00633 h 63.13522 v 88.24706 m -125.49999,127.67621 62.36477,36.00633 h 63.13522 v -88.24706"
+       id="path2939"
+       inkscape:path-effect="#path-effect3054"
+       inkscape:original-d="m 753.33886,422.04153 62.36477,-36.00633 h 63.13522 v 88.24706"
+       transform="matrix(1.1136778,0,0,1.1147302,-41.900135,-9.3665464)" />
+    <path
+       style="fill:#90bc97;fill-opacity:1;stroke:#000000;stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 325.32376,434.13368 v -96.61996 c 0,-9.34872 5.65535,-15.30577 16.56782,-15.30577 h 161.99594 c 7.84902,0 13.13884,2.23971 18.13151,6.14393 l 126.52219,107.89944"
+       id="path3089"
+       sodipodi:nodetypes="cccccc" />
+    <g
+       id="g2824"
+       style="stroke-width:4.74928;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(1.1136778,0,0,1.1147302,-41.900135,-6.724792)" />
+    <path
+       style="fill:#90aabc;fill-opacity:1;stroke:#000000;stroke-width:5.29167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 48.20791,561.37978 c 0,-57.00168 54.44801,-136.39869 136.26999,-136.39869 h 451.89991 c 118.15692,0 358.4643,81.16154 358.4643,136.26602 z m 0,-0.009 c 0,57.00167 54.44801,136.39869 136.26999,136.39869 h 451.89991 c 118.15692,0 358.4643,-81.16155 358.4643,-136.26603 z"
+       id="path1557"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+  <metadata
+     id="metadata8312">
+    <rdf:RDF>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+        <dc:title>V0LT Submarine Logo</dc:title>
+        <dc:date>2023-11-15</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Conner Vieira</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>V0LT</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
