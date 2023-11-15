@@ -103,8 +103,8 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
             $shown_targets = 0;
             foreach ($submarine_config["targets"]["main"] as $key => $data) {
                 echo "<h4>" . $key . "</h4>";
-                echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value='" . $key . "'><br>";
-                echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value='" . $data["ip"] . "'><br><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">title'></label> <input name='targets>main>" . $shown_targets . ">title' id='targets>main>" . $shown_targets . ">title' placeholder='Host' type='text' value=\"" . $key . "\"><br>";
+                echo "<label for='targets>main>" . $shown_targets . ">ip'></label> <input name='targets>main>" . $shown_targets . ">ip' id='targets>main>" . $shown_targets . ">ip' placeholder='127.0.0.1' type='text' value=\"" . $data["ip"] . "\"><br><br>";
                 $shown_targets = $shown_targets + 1;
             }
             echo "<h4>New Target</h4>";
