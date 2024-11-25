@@ -49,7 +49,7 @@ if ($_POST["interface>theme"] == "dark" or $_POST["interface>theme"] == "light")
                 foreach (explode(",", $_POST["auth>authorized_users"]) as $authorized_user) {
                     if (strlen($authorized_user) > 0) {
                         $authorized_user = trim($authorized_user); // Trim any trailing or leading whitespace from this entry.
-                        if (trim($authorized_user) == preg_replace("/[^a-zA-Z0-9]/", '', trim($authorized_user))) { // Verify that this entry only contains permitted characters.
+                        if (trim($authorized_user) != preg_replace("/[^a-zA-Z0-9]/", '', trim($authorized_user))) { // Verify that this entry only contains permitted characters.
                             echo "<p class='bad'>The <b>" . htmlspecialchars($authorized_user) . "</b> username contains disallowed characters.</p>";
                             $configuration_valid = false;
                         } else {
